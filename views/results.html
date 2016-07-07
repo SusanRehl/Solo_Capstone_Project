@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="vendors/angular.min.js"></script>
+    <script src="vendors/jquery-2.2.3.min.js"></script>
+    <script src="scripts/script.js"></script>
+    <link rel="stylesheet" href="vendors/bootstrap.min.css" charset="utf-8">
+    <link rel="stylesheet" href="css/stylesheet.css" charset="utf-8">
+    <title>Your Results</title>
+  </head>
+  <body>
+    <div ng-controller='productController'>
+        <div class='container'>
+            <h2>Your Results</h2>
+            <h4>You chose: [4 choices]</h4>
+             <p></p>
+             <div class="row">
+               <div class="productRecord" ng-repeat='record in disinfectantList'>
+                 <p>{{ record.productname }}  {{ record.manufacturer}} {{ record.format}}</p>
+        </div>
+        <button type="button" name-"button" ng-click="">Download PDF</button>
+        <button type="button" name-"button" ng-click="">Share PDF</button>
+        <button type="button" name-"button" ng-click="">Download Cost Calculator (Excel)</button>
+        <button type="button" name-"button" ng-click="">View All Matched Products</button>
+        <button type="button" name-"button"><a href="/questionnaire">Back to Questionnaire</button>
+  </div>
+  </body>
+</html>

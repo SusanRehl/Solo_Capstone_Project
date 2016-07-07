@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="vendors/angular.min.js"></script>
+    <script src="vendors/jquery-2.2.3.min.js"></script>
+    <script src="scripts/script.js"></script>
+    <link rel="stylesheet" href="vendors/bootstrap.min.css" charset="utf-8">
+    <link rel="stylesheet" href="css/stylesheet.css" charset="utf-8">
+    <title>Disinfectant Selector Questionnaire</title>
+  </head>
+  <body>
+    <div ng-controller='productController'>
+      <h1>Hospital-Grade Disinfectant Selector</h1>
+        <h3>Please select one answer to each question which fits your disinfection situation.<br />
+        You must select an option for each question in order to proceed.</h3>
+        <h4>What areas do you need to disinfect? (select from list)</h4>
+          <p>Floors and walls</p>
+          <p>Patient rooms</p>
+          <p>OR (operating rooms), chemo, neonatal, and/or burn units</p>
+        <h4>What surfaces do you need to disinfect? (select from list)</h4>
+          <p>Hard surfaces only (counters, bedrails, tables, doorknobs, toilets)</p>
+          <p>Soft surfaces only (privacy curtains, chair upholstery)</p>
+          <p>Both</p>
+        <h4>What pathogens are you most concerned about? (select from list)</h4>
+          <p>Basic broad-spectrum bacteria and viruses (enveloped viruses)</p>
+          <p>Norovirus and/or Ebola (non-enveloped viruses), along with bacteria and enveloped viruses</p>
+          <p>C. difficile or other spores</p>
+          <p>Fungi (Trichophyton mentagrophytes/athlete’s foot fungus, or others)</p>
+        <h4>Your format preference: (select from list)</h4>
+          <p>RTU wipes</p>
+          <p>RTU liquid (spray, squirt, or pour)</p>
+          <p>Concentrate</p>
+          <p>No preference</p>
+    <button type="button" name-"button" ng-click="getProducts()">Submit</button>
+    <div class="container">
+      <div class="row">
+        <div class="productRecord" ng-repeat='record in disinfectantList'>
+          <p>{{ record.productname }}  {{ record.manufacturer}} {{ record.format}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </body>
+</html>
