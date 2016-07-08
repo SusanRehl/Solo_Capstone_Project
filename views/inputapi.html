@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <script src="vendors/angular.min.js"></script>
+    <script src="vendors/jquery-2.2.3.min.js"></script>
+    <script src="scripts/script.js"></script>
+    <link rel="stylesheet" href="vendors/bootstrap.min.css" charset="utf-8">
+    <link rel="stylesheet" href="css/stylesheet.css" charset="utf-8">
+    <title>Get Disinfectants from EPA PPLS</title>
+  </head>
+  <body>
+    <div ng-controller='productController'>
+      <h1>Get Disinfectant Data from EPA's PPLS API</h1>
+      <input type="text" ng-model='numberIn' value="" placeholder="enter epa reg no">
+      <button ng-click='productSearch()'>Search for Disinfectant</button>
+      <h2>Your Product:</h2>
+      <div ng-repeat='record in everySearch'>
+        <p>{{ record.eparegno }}</p>
+        <p>{{ record.productname }}</p>
+        <p>{{ record.manufacturer}}</p>
+  </div>
+  </body>
+</html>

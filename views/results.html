@@ -15,12 +15,12 @@
     <div ng-controller='productController' ng-init='getProducts()'>
         <div class='container'>
             <h2>Your Results</h2>
-              <h4>You chose: Areas: {{places}}, Surfaces: {{surfaces}}, Pathogens: {{pathogens}}, Format: {{format}}</h4>
+              <h4>You chose: Areas: {{places}}, Surfaces: {{surfaces}}, Pathogens: {{pathogens}}, Format: {{choices}}</h4>
             <p></p>
-            <h6>Score Product Image Product Name Manufacturer EPA Reg No. Chemistry Bacteria and Viruses Kill Time and Claims HMIS Rating & PPE Required Additonal Equipment Required Additonal Links</h6>
+            <h6>Score Product Image Product Name Manufacturer EPA Reg No. Chemistry Bacteria and Viruses Kill Time and Claims HMIS Rating & PPE Required Additional Equipment Required Additional Links</h6>
             <div class="row">
                <div class="productRecord" ng-repeat='record in disinfectantList'>
-                 <p>{{ record.productname }}  {{ record.manufacturer}} {{ record.format}}</p>
+                 <p><b>Add scores!</b>  <img ng-src="{{record.image}}"></img>  {{ record.productname }}  {{ record.manufacturer}} {{record.eparegno}}  {{record.chemistry}}  {{record.bvclaims}} <b>KILL TIME VARIABLE</b> {{record.hmis}} {{record.ppe}}  {{record.equipment}}  <a href ={{record.productpage}}>Product Page Link</a>  <a href ={{record.sds}}>Safety Data Sheet Link</a>  <a href ={{record.techdocs}}>Technical Documents Link</a>  <a href ={{record.epamasterlabel}}>EPA Master Label PDF Link</a></p>
                </div>
             </div>
         <button type="button" name-"button" ng-click="">Download PDF</button>

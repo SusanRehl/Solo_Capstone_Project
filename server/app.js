@@ -20,6 +20,10 @@ app.get( '/results', function( req, res ){  // makes results.html available
   res.sendFile( path.resolve( 'views/results.html' ) );
   });
 
+app.get( '/inputapi', function( req, res ){  // makes inputapi.html available
+  res.sendFile( path.resolve( 'views/inputapi.html' ) );
+  });
+
 var selectedProducts;
 
 app.post('/select', urlencodedParser, function(req, res) { // displaying to do list - uses GET

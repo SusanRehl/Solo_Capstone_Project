@@ -2,39 +2,7 @@ console.log('script.js is sourced');
 
 var myApp=angular.module('myApp', []);
 
-// app.factory('myService', function() {
-//  var savedData = {};
-//  function set(data) {
-//    savedData = data; }
-//  function get() {
-//   return savedData;
-//  }
-//  return {
-//   set: set,
-//   get: get
-// };
-// });
-// myService.set(yourSharedData);   //put into questionnaire controller
-// $scope.desiredLocation = myService.get(); // put into results controller
-// Remember to inject myService in the controllers by passing it as a parameter.
-
-myApp.factory('DataService', function() {
-    var choices = {};
-    function set(data) {
-      choices=data;
-    } // end function set data
-    function get() {
-      return choices;
-    } // end function get
-    return {
-      set: set,
-      get: get
-    }; // end return
-  }); // end factory
-
-myApp.controller('productController', ['$scope', '$http', 'DataService', function($scope, $http, DataService) {
-
-  DataService.set(yourSharedData);
+myApp.controller('productController', ['$scope', '$http', function($scope, $http) {
 
   $scope.disinfectantList=[]; // creates array of disinfectant results
 
@@ -69,5 +37,34 @@ myApp.controller('productController', ['$scope', '$http', 'DataService', functio
       }// end error function
     ); // end then response
   }; // end getProducts function
+
+// API CODE
+  $scope.everySearch=[]; // gets disinfectants from EPA's API
+
+  $scope.productSearch = function(){
+    console.log('in productSearch: ' + $scope.numberIn);
+
+    var apiURL = 'https://ofmpub.epa.gov/apex/pesticides/ppls/' + $scope.numberIn; // assemble API URL
+    console.log("apiURL: " + apiURL);
+
+    $http({   //  http call to the API url
+      method: 'GET',
+      url: apiURL
+    }).then(function(response){ //end http get, start function
+      console.log('response.data.items ', response.data.items[0] );       // log the response from the http call
+      var thisProduct = response.data.items[0];
+      var productObject={
+        eparegno: thisProduct.eparegno,
+        productname: thisProduct.productname,
+        manufacturer: thisProduct.companyinfo[0].name
+      }; // end object
+      console.log(productObject);
+      $scope.everySearch.push(productObject); // push API data into array
+      console.log('productObject: ' + productObject.eparegno + " " + productObject.productname + productObject.manufacturer);
+      console.log('everySearch: ' + $scope.everySearch);
+    }); // end then
+    $scope.numberIn='';    // clear input field
+  }; // end productSearch function
+//end API CODE
 
 }]); // end myApp controller
