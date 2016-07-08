@@ -12,20 +12,23 @@
     <title>Your Results</title>
   </head>
   <body>
-    <div ng-controller='productController'>
+    <div ng-controller='productController' ng-init='getProducts()'>
         <div class='container'>
             <h2>Your Results</h2>
-            <h4>You chose: [4 choices]</h4>
-             <p></p>
-             <div class="row">
+              <h4>You chose: Areas: {{places}}, Surfaces: {{surfaces}}, Pathogens: {{pathogens}}, Format: {{format}}</h4>
+            <p></p>
+            <h6>Score Product Image Product Name Manufacturer EPA Reg No. Chemistry Bacteria and Viruses Kill Time and Claims HMIS Rating & PPE Required Additonal Equipment Required Additonal Links</h6>
+            <div class="row">
                <div class="productRecord" ng-repeat='record in disinfectantList'>
                  <p>{{ record.productname }}  {{ record.manufacturer}} {{ record.format}}</p>
-        </div>
+               </div>
+            </div>
         <button type="button" name-"button" ng-click="">Download PDF</button>
         <button type="button" name-"button" ng-click="">Share PDF</button>
         <button type="button" name-"button" ng-click="">Download Cost Calculator (Excel)</button>
         <button type="button" name-"button" ng-click="">View All Matched Products</button>
         <button type="button" name-"button"><a href="/questionnaire">Back to Questionnaire</button>
-  </div>
+        </div>
+    </div>
   </body>
 </html>

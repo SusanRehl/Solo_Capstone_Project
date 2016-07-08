@@ -16,32 +16,91 @@
       <h1>Hospital-Grade Disinfectant Selector</h1>
         <h3>Please select one answer to each question which fits your disinfection situation.<br />
         You must select an option for each question in order to proceed.</h3>
-        <h4>What areas do you need to disinfect? (select from list)</h4>
-          <p>Floors and walls</p>
-          <p>Patient rooms</p>
-          <p>OR (operating rooms), chemo, neonatal, and/or burn units</p>
-        <h4>What surfaces do you need to disinfect? (select from list)</h4>
-          <p>Hard surfaces only (counters, bedrails, tables, doorknobs, toilets)</p>
-          <p>Soft surfaces only (privacy curtains, chair upholstery)</p>
-          <p>Both</p>
-        <h4>What pathogens are you most concerned about? (select from list)</h4>
-          <p>Basic broad-spectrum bacteria and viruses (enveloped viruses)</p>
-          <p>Norovirus and/or Ebola (non-enveloped viruses), along with bacteria and enveloped viruses</p>
-          <p>C. difficile or other spores</p>
-          <p>Fungi (Trichophyton mentagrophytes/athlete’s foot fungus, or others)</p>
-        <h4>Your format preference: (select from list)</h4>
-          <p>RTU wipes</p>
-          <p>RTU liquid (spray, squirt, or pour)</p>
-          <p>Concentrate</p>
-          <p>No preference</p>
-    <button type="button" name-"button" ng-click="getProducts()">Submit</button>
-    <div class="container">
-      <div class="row">
-        <div class="productRecord" ng-repeat='record in disinfectantList'>
-          <p>{{ record.productname }}  {{ record.manufacturer}} {{ record.format}}</p>
+          <div class="form-group">
+            <label for="places">1. What areas do you need to disinfect? (select from list)</label><br />
+            <div class="radio">
+              <label>
+              <input type="radio" name="areas" value="low" ng-model="places">
+              Floors and walls</label>
+            </div>
+            <div class="radio">
+              <label>
+              <input type="radio" name="areas" value="intermed" ng-model="places">
+              Patient rooms</label>
+            </div>
+            <div class="radio">
+              <label>
+              <input type="radio" name="areas" value="high" ng-model="places">
+              OR (operating rooms), chemo, neonatal, and/or burn units</label>
+            </div>
         </div>
-      </div>
-    </div>
+          <p></p>
+
+          <div class="form-group">
+            <label for="surfaces">2. What surfaces do you need to disinfect? (select from list)</label><br />
+            <div class="radio">
+              <label>
+              <input type="radio" name="surfaces" value="hard" ng-model="surfaces">
+              Hard surfaces only (counters, bedrails, tables, doorknobs, toilets)</label>
+            </div>
+            <div class="radio">
+              <label>
+              <input type="radio" name="surfaces" value="both" ng-model="surfaces">
+              Hard and soft (privacy curtains, chair upholstery) surfaces </label>
+            </div>
+        </div>
+          <p></p>
+
+          <div class="form-group">
+            <label for="pathogens">3. What pathogens are you most concerned about? (select from list)</label><br />
+            <div class="radio">
+              <label>
+              <input type="radio" name="pathogens" value="Basic bacteria and viruses" ng-model="pathogens">
+              Basic broad-spectrum bacteria and viruses (enveloped viruses)</label>
+            </div>
+            <div class="radio">
+              <label>
+              <input type="radio" name="pathogens" value="Norovirus etc." ng-model="pathogens">
+              Norovirus and/or Ebola (non-enveloped viruses), along with bacteria and enveloped viruses</label>
+            </div>
+            <div class="radio">
+              <label>
+              <input type="radio" name="pathogens" value="C difficile" ng-model="pathogens">
+              C. difficile or other spores</label>
+            </div>
+            <div class="radio">
+              <label>
+              <input type="radio" name="pathogens" value="Fungi" ng-model="pathogens">
+              Fungi (Trichophyton mentagrophytes/athlete’s foot fungus, or others)</label>
+            </div>
+          </div>
+          <p></p>
+
+          <div class="form-group">
+            <label for="format">4. Your format preference: (select from list)</label><br />
+            <div class="radio">
+              <label>
+              <input type="radio" name="format" value="RTU Wipes" ng-model="format">
+              RTU wipes</label>
+            </div>
+            <div class="radio">
+              <label>
+              <input type="radio" name="format" value="RTU Liquid" ng-model="format">
+              RTU liquid (spray, squirt, or pour)</label>
+            </div>
+            <div class="radio">
+              <label>
+              <input type="radio" name="format" value="Concentrate" ng-model="format">
+              Concentrate</label>
+            </div>
+            <div class="radio">
+              <label>
+              <input type="radio" name="format" value="No Preference" ng-model="format">
+              No preference</label>
+            </div>
+          </div>
+          <p></p>
+    <button type="button" name-"button" ng-click="selectProducts()">Submit</button>
   </div>
   </body>
 </html>
