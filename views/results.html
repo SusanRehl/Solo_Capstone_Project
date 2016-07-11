@@ -33,8 +33,8 @@
                  <td>Additional Equipment Required</td>
                  <td>Additional Links</td>
                  </tr>
-               <tr class="productRecord" ng-repeat='record in disinfectantList'>
-                 <td><b>Add scores!</b></td>
+               <tr class="productRecord" ng-repeat='record in disinfectantList | orderBy:scoretotal'>
+                 <td ng-init="record.scoretotal = record.scorekill + record.scoresafety + record.scorepathogens"><b>{{record.scoretotal}}</b></td>
                  <td><img ng-src="{{record.image}}" height="150"></img></td>
                  <td><b>{{ record.productname }}</b></td>
                  <td>{{ record.manufacturer}}
@@ -43,7 +43,7 @@
                  <td><b>KILL TIME VARIABLE</b><br />{{record.bvclaims}}</td>
                  <td>{{record.hmis}}<br />{{record.ppe}}</td>
                  <td>{{record.equipment}}</td>
-                 <td><a href ={{record.productpage}}>Product Page Link</a><br /><a href ={{record.sds}}>Safety Data Sheet Link</a><br /><a href ={{record.techdocs}}>Technical Documents Link</a><br /><a href ={{record.epamasterlabel}}>EPA Master Label PDF Link</a></td>
+                 <td><a href ={{record.productpage}}>Product Page Link</a><br /><a href ={{record.sds}}>Safety Data Sheet Link</a><br /><a ng-show="record.techdocs!==0" href ={{record.techdocs}}>Technical Documents Link</a><br /><a ng-show="record.epamasterlabel!==0"href ={{record.epamasterlabel}}>EPA Master Label PDF Link</a></td>
                </tr>
              </table>
             </div>

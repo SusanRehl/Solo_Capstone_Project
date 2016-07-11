@@ -37,11 +37,61 @@ app.post('/select', urlencodedParser, function(req, res) { // pulling selected d
       console.log(err);
     } else { // start selection criteria
         if (req.body.format==="No Preference") { // returns products of all formats which meet the criteria below
-          console.log('no preference');
+          // console.log('no preference');
+          switch(req.body.pathogens) {
+            case "Basic bacteria and viruses":
+              products=client.query("SELECT * FROM products WHERE surfaces= '" + req.body.surfaces + "' AND noroclaim=FALSE AND cdiffclaim=FALSE ORDER BY(scorekill + scoresafety + scorepathogens) DESC LIMIT 3");  // getting products from products table
+              rows = 0;
+              products.on('row', function(row) {  // pushing to array
+                selectedProducts.push(row);
+              });  // end query push
+              products.on('end', function() {  // sending to scripts
+                console.log("bac and vir products from app.post in app");
+                console.log(selectedProducts);
+                return res.json(selectedProducts);
+              }); // end products.on function
+            break; // end case bacteria and viruses
+            case "Norovirus etc.":
+              products=client.query("SELECT * FROM products WHERE surfaces= '" + req.body.surfaces + "' AND noroclaim=TRUE AND cdiffclaim=FALSE ORDER BY(scorekill + scoresafety + scorepathogens) DESC LIMIT 3");  // getting products from products table
+              rows = 0;
+              products.on('row', function(row) {  // pushing to array
+                selectedProducts.push(row);
+              });  // end query push
+              products.on('end', function() {  // sending to scripts
+                console.log("Noro products from app.post in app");
+                console.log(selectedProducts);
+                return res.json(selectedProducts);
+              }); // end products.on function
+              break; // end case norovirus and enveloped viruses
+            case "C difficile":
+              products=client.query("SELECT * FROM products WHERE surfaces= '" + req.body.surfaces + "' AND cdiffclaim=TRUE ORDER BY(scorekill + scoresafety + scorepathogens) DESC LIMIT 3");  // getting products from products table
+              rows = 0;
+              products.on('row', function(row) {  // pushing to array
+                selectedProducts.push(row);
+              });  // end query push
+              products.on('end', function() {  // sending to scripts
+                console.log("C diff products from app.post in app");
+                console.log(selectedProducts);
+                return res.json(selectedProducts);
+              }); // end products.on function
+              break; // end case C difficile
+            case "Fungi":
+              products=client.query("SELECT * FROM products WHERE surfaces= '" + req.body.surfaces + "' AND fungiclaim=TRUE ORDER BY(scorekill + scoresafety + scorepathogens) DESC LIMIT 3");  // getting products from products table
+              rows = 0;
+              products.on('row', function(row) {  // pushing to array
+                selectedProducts.push(row);
+              });  // end query push
+              products.on('end', function() {  // sending to scripts
+                console.log("Fungi products from app.post in app");
+                console.log(selectedProducts);
+                return res.json(selectedProducts);
+              }); // end products.on function
+              break; // end case Fungi
+          } // end switch
         } else { // includes format in the query
             switch(req.body.pathogens) {
               case "Basic bacteria and viruses":
-                products=client.query("SELECT * FROM products WHERE surfaces= '" + req.body.surfaces + "' AND format= '" + req.body.format + "' AND noroclaim=FALSE AND cdiffclaim=FALSE");  // getting products from products table
+                products=client.query("SELECT * FROM products WHERE surfaces= '" + req.body.surfaces + "' AND format= '" + req.body.format + "' AND noroclaim=FALSE AND cdiffclaim=FALSE ORDER BY(scorekill + scoresafety + scorepathogens) DESC LIMIT 3");  // getting products from products table
                 rows = 0;
                 products.on('row', function(row) {  // pushing to array
                   selectedProducts.push(row);
@@ -53,7 +103,7 @@ app.post('/select', urlencodedParser, function(req, res) { // pulling selected d
                 }); // end products.on function
               break; // end case bacteria and viruses
               case "Norovirus etc.":
-                products=client.query("SELECT * FROM products WHERE surfaces= '" + req.body.surfaces + "' AND format= '" + req.body.format + "' AND noroclaim=TRUE AND cdiffclaim=FALSE");  // getting products from products table
+                products=client.query("SELECT * FROM products WHERE surfaces= '" + req.body.surfaces + "' AND format= '" + req.body.format + "' AND noroclaim=TRUE AND cdiffclaim=FALSE ORDER BY(scorekill + scoresafety + scorepathogens) DESC LIMIT 3");  // getting products from products table
                 rows = 0;
                 products.on('row', function(row) {  // pushing to array
                   selectedProducts.push(row);
@@ -65,7 +115,7 @@ app.post('/select', urlencodedParser, function(req, res) { // pulling selected d
                 }); // end products.on function
                 break; // end case norovirus and enveloped viruses
               case "C difficile":
-                products=client.query("SELECT * FROM products WHERE surfaces= '" + req.body.surfaces + "' AND format= '" + req.body.format + "' AND cdiffclaim=TRUE");  // getting products from products table
+                products=client.query("SELECT * FROM products WHERE surfaces= '" + req.body.surfaces + "' AND format= '" + req.body.format + "' AND cdiffclaim=TRUE ORDER BY(scorekill + scoresafety + scorepathogens) DESC LIMIT 3");  // getting products from products table
                 rows = 0;
                 products.on('row', function(row) {  // pushing to array
                   selectedProducts.push(row);
@@ -77,7 +127,7 @@ app.post('/select', urlencodedParser, function(req, res) { // pulling selected d
                 }); // end products.on function
                 break; // end case C difficile
               case "Fungi":
-                products=client.query("SELECT * FROM products WHERE surfaces= '" + req.body.surfaces + "' AND format= '" + req.body.format + "' AND fungiclaim=TRUE");  // getting products from products table
+                products=client.query("SELECT * FROM products WHERE surfaces= '" + req.body.surfaces + "' AND format= '" + req.body.format + "' AND fungiclaim=TRUE ORDER BY(scorekill + scoresafety + scorepathogens) DESC LIMIT 3");  // getting products from products table
                 rows = 0;
                 products.on('row', function(row) {  // pushing to array
                   selectedProducts.push(row);
@@ -90,16 +140,6 @@ app.post('/select', urlencodedParser, function(req, res) { // pulling selected d
                 break; // end case Fungi
             } // end switch
         } //end else
-        // var products=client.query("SELECT * FROM products WHERE areas= '" + req.body.areas + "'");  // getting products from products table
-        // var rows = 0;
-        // products.on('row', function(row) {  // pushing to array
-        //   selectedProducts.push(row);
-        // });  // end query push
-        // products.on('end', function() {  // sending to scripts
-        //   // console.log("Here are the selected products from app.post in app");
-        //   // console.log(selectedProducts);
-        //   return res.json(selectedProducts);
-        // }); // end products.on function
       done(); // signals done
     } // end else
   }); // end pg connect function
