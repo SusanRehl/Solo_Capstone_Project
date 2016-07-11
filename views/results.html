@@ -12,16 +12,40 @@
     <title>Your Results</title>
   </head>
   <body>
-    <div ng-controller='productController' ng-init='getProducts()'>
+    <div ng-controller='productController' ng-init='resultsInit()'>
         <div class='container'>
             <h2>Your Results</h2>
-              <h4>You chose: Areas: {{places}}, Surfaces: {{surfaces}}, Pathogens: {{pathogens}}, Format: {{choices}}</h4>
+                <div class="choices"><h4>You chose: Areas: {{choices.values[0]}}, Surfaces: {{choices.values[1]}}, Pathogens: {{choices.values[2]}}, Format: {{choices.values[3]}}</h4></div>
             <p></p>
-            <h6>Score Product Image Product Name Manufacturer EPA Reg No. Chemistry Bacteria and Viruses Kill Time and Claims HMIS Rating & PPE Required Additional Equipment Required Additional Links</h6>
+            <h6></h6>
             <div class="row">
-               <div class="productRecord" ng-repeat='record in disinfectantList'>
-                 <p><b>Add scores!</b>  <img ng-src="{{record.image}}"></img>  {{ record.productname }}  {{ record.manufacturer}} {{record.eparegno}}  {{record.chemistry}}  {{record.bvclaims}} <b>KILL TIME VARIABLE</b> {{record.hmis}} {{record.ppe}}  {{record.equipment}}  <a href ={{record.productpage}}>Product Page Link</a>  <a href ={{record.sds}}>Safety Data Sheet Link</a>  <a href ={{record.techdocs}}>Technical Documents Link</a>  <a href ={{record.epamasterlabel}}>EPA Master Label PDF Link</a></p>
-               </div>
+              <p ng-show="disinfectantList.length==0">No products match your criteria. Please try again.</p>
+              <table>
+               <tr ng-show="disinfectantList.length!==0">
+                 <td>Score</td>
+                 <td>Product Image</td>
+                 <td>Product Name</td>
+                 <td>Manufacturer</td>
+                 <td>EPA Reg No.</td>
+                 <td>Chemistry</td>
+                 <td>Bacteria and Viruses Kill Time and Claims</td>
+                 <td>HMIS Rating and PPE Required</td>
+                 <td>Additional Equipment Required</td>
+                 <td>Additional Links</td>
+                 </tr>
+               <tr class="productRecord" ng-repeat='record in disinfectantList'>
+                 <td><b>Add scores!</b></td>
+                 <td><img ng-src="{{record.image}}" height="150"></img></td>
+                 <td><b>{{ record.productname }}</b></td>
+                 <td>{{ record.manufacturer}}
+                 <td>{{record.eparegno}}</td>
+                 <td>{{record.chemistry}}</td>
+                 <td><b>KILL TIME VARIABLE</b><br />{{record.bvclaims}}</td>
+                 <td>{{record.hmis}}<br />{{record.ppe}}</td>
+                 <td>{{record.equipment}}</td>
+                 <td><a href ={{record.productpage}}>Product Page Link</a><br /><a href ={{record.sds}}>Safety Data Sheet Link</a><br /><a href ={{record.techdocs}}>Technical Documents Link</a><br /><a href ={{record.epamasterlabel}}>EPA Master Label PDF Link</a></td>
+               </tr>
+             </table>
             </div>
         <button type="button" name-"button" ng-click="">Download PDF</button>
         <button type="button" name-"button" ng-click="">Share PDF</button>

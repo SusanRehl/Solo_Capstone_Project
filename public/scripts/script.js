@@ -5,48 +5,77 @@ var myApp=angular.module('myApp', []);
 myApp.controller('productController', ['$scope', '$http', function($scope, $http) {
 
   $scope.disinfectantList=[]; // creates array of disinfectant results
+  $scope.choices=[];
+  var objectToSend={};
 
-  $scope.selectProducts = function() {
+  $scope.selectProducts = function() { // pulls criteria values from questionnaire
       event.preventDefault();
-      var objectToSend ={  // package inputs into object to send
+      objectToSend ={  // package inputs into object to send
         areas: $scope.places,  // reference these in questionnaire.html
         surfaces: $scope.surfaces,
         pathogens: $scope.pathogens,
         format: $scope.format
         }; // end object
-      $http({  // sends object via POST
+        console.log("in scripts select about to run savechoices");
+        $scope.saveChoices(); // calls saveChoices function to send choices to choices table in database for use on results page
+      $http({  // sends object via POST to select products to return
         method: 'POST',
         url: '/select',
         data: objectToSend
-      }); // end post call
+      });
     var path="/results";  // sends user to results page on click
     window.location.href=path;
   }; // end selectProduct function
 
-    $scope.getProducts = function() {
-      $http({   // gets recordset via GET
-        method: 'GET',
-        url: '/list',
-      }).then( function(response){  // success call - runs function with response parameter
-      // console.log(response.data);
-      $scope.disinfectantList = response.data;  // pulls the data from app.js and sets to disinfectantList
-      // console.log("log from select function in script:");
-      // console.log($scope.disinfectantList);
-    }, function myError(response){
-      console.log(response.statusText);
-      }// end error function
-    ); // end then response
+  $scope.saveChoices = function() { // pulls choice values from questionnaire
+        event.preventDefault();
+    $http({  // sends object via POST to capture choice values to display on results page
+      method: 'POST',
+      url: '/choices',
+      data: objectToSend
+    }); // end post call
+  }; // end saveChoices function
+
+  $scope.resultsInit = function() { // ng-init function for results page which calls both getProducts and getChoices functions
+    $scope.getProducts();
+    $scope.getChoices();
+  }; //end resultsInit function
+
+  $scope.getProducts = function() { // gets products for results page
+    $http({   // gets recordset via GET
+      method: 'GET',
+      url: '/list',
+    }).then( function(response){  // success call - runs function with response parameter
+    // console.log(response.data);
+    $scope.disinfectantList = response.data;  // pulls the data from app.js and sets to disinfectantList
+    // console.log($scope.disinfectantList);
+  }, function myError(response){
+    console.log(response.statusText);
+    }// end error function
+  ); // end then response
   }; // end getProducts function
+
+  $scope.getChoices = function() {  // get choices for display on results page
+    $http({   // gets recordset via GET
+      method: 'GET',
+      url: '/choicelist',
+    }).then( function(response){  // success call - runs function with response parameter
+    $scope.choices = response.data;  // pulls the data from app.js and sets to choices
+    console.log("log from get choices function in script: ", $scope.choices);
+  }, function myError(response){
+    console.log(response.statusText);
+    }// end error function
+  ); // end then response
+}; // end getChoices function
+
 
 // API CODE
   $scope.everySearch=[]; // gets disinfectants from EPA's API
 
   $scope.productSearch = function(){
     console.log('in productSearch: ' + $scope.numberIn);
-
     var apiURL = 'https://ofmpub.epa.gov/apex/pesticides/ppls/' + $scope.numberIn; // assemble API URL
     console.log("apiURL: " + apiURL);
-
     $http({   //  http call to the API url
       method: 'GET',
       url: apiURL
@@ -65,6 +94,20 @@ myApp.controller('productController', ['$scope', '$http', function($scope, $http
     }); // end then
     $scope.numberIn='';    // clear input field
   }; // end productSearch function
+
+  $scope.sendProducts = function() {
+      event.preventDefault();
+      var objectToSend ={  // package inputs into object to send
+        productname: $scope.everySearch.productname,  // reference these in questionnaire.html
+        manufacturer: $scope.everySearch.manufacturer,
+        eparegno: $scope.everySearch.eparegno
+        }; // end object
+      $http({  // sends object via POST
+        method: 'POST',
+        url: '/sendToDb',
+        data: objectToSend
+      }); // end post call
+  }; // end sendProducts function
 //end API CODE
 
 }]); // end myApp controller
