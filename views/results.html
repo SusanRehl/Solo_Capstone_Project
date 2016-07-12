@@ -6,6 +6,10 @@
     <meta charset="utf-8">
     <script src="vendors/angular.min.js"></script>
     <script src="vendors/jquery-2.2.3.min.js"></script>
+    <script src="vendors/pdfmake.min.js"></script>
+ 	  <script src="vendors/vfs_fonts.js"></script>
+    <script src="vendors/html2canvas.js"></script>
+    <script src="vendors/html2canvas.svg.js"></script>
     <script src="scripts/script.js"></script>
     <link rel="stylesheet" href="vendors/bootstrap.min.css" charset="utf-8">
     <link rel="stylesheet" href="css/stylesheet.css" charset="utf-8">
@@ -13,7 +17,7 @@
   </head>
   <body>
     <div ng-controller='productController' ng-init='resultsInit()'>
-        <div class='container'>
+        <div class='container' id="exportPDF">
             <h2>Your Results</h2>
                 <div class="choices"><h4>You chose: Areas: {{choices.values[0]}}, Surfaces: {{choices.values[1]}}, Pathogens: {{choices.values[2]}}, Format: {{choices.values[3]}}</h4></div>
             <p></p>
@@ -54,11 +58,11 @@
                </tr>
              </table>
             </div>
-        <button type="button" name-"button" ng-click="">Download PDF</button>
-        <button type="button" name-"button" ng-click="">Share PDF</button>
-        <button type="button" name-"button" ng-click="">Download Cost Calculator (Excel)</button>
-        <button type="button" name-"button" ng-click="">View All Matched Products</button>
-        <button type="button" name-"button"><a href="/questionnaire">Back to Questionnaire</button>
+        <button type="button" name="button" ng-click="downloadPDF()">Download PDF</button>
+        <button type="button" name="button" ng-click="">Share PDF</button>
+        <button type="button" name="button" ng-click="">Download Cost Calculator (Excel)</button>
+        <button type="button" name="button" ng-click="viewAllMatches()">View All Matched Products</button>
+        <button type="button" name="button"><a href="/questionnaire">Back to Questionnaire</button>
         </div>
     </div>
   </body>
