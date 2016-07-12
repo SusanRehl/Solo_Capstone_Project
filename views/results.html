@@ -10,8 +10,11 @@
  	  <script src="vendors/vfs_fonts.js"></script>
     <script src="vendors/html2canvas.js"></script>
     <script src="vendors/html2canvas.svg.js"></script>
+    <!-- <script src="vendors/ngDialog.js"></script> -->
     <script src="scripts/script.js"></script>
     <link rel="stylesheet" href="vendors/bootstrap.min.css" charset="utf-8">
+    <!-- <script src="vendors/ngDialog.css"></script> -->
+    <!-- <script src="vendors/ngDialog-theme-default.css"></script> -->
     <link rel="stylesheet" href="css/stylesheet.css" charset="utf-8">
     <title>Your Results</title>
   </head>
@@ -59,11 +62,53 @@
              </table>
             </div>
         <button type="button" name="button" ng-click="downloadPDF()">Download PDF</button>
-        <button type="button" name="button" ng-click="">Share PDF</button>
-        <button type="button" name="button" ng-click="">Download Cost Calculator (Excel)</button>
+        <button type="button" name="button"><a href="mailto:%20?subject=List%20of%20Disinfectants&body=Remember%20to%20attach%20the%20PDF%20from%20your%20Downloads%20folder">Email<br />(download PDF first)</button></a>
+        <button type="button" name="button"><a href="files/dummy.rtf" download>Download Cost Calculator (Excel)</button></a>
         <button type="button" name="button" ng-click="viewAllMatches()">View All Matched Products</button>
-        <button type="button" name="button"><a href="/questionnaire">Back to Questionnaire</button>
-        </div>
+        <button type="button" name="button"><a href="/questionnaire">Back to Questionnaire</button><a>
+
+          <div ng-controller="MyCtrl">
+            <button ng-click="toggleModal()">Score</button></td>
+
+          <modal-dialog show='modalShown' width='750px' height='90%'>
+
+              <h6>Scoring Method:</h6>
+              <p>Highest (best) possible score: 30</p>
+              <p>Score is the sum of 3 variables:</p>
+              <p>Broad-Spectrum Pathogen Kill Score:</p>
+                <ul>
+                  <li>10 - claims for all ESKAPE pathogens plus 20 others</li>
+                  <li>8 - claims for all ESKAPE pathogens plus 10 others</li>
+                  <li>7 - claims for half of ESKAPE pathogens plus 20 others</li>
+                  <li>5 - claims for half of ESKAPE pathogens plus 10 others</li>
+                  <li>3 - claims for at least 10 pathogens</li>
+                  <li>1 - claims for less than 10 pathogens</li>
+                </ul>
+              <p>Kill Time Score:</p>
+                <ul>
+                  <li><b>10</b> - 1 minute or less</li>
+                  <li><b>9</b> - 1-2 minutes</li>
+                  <li><b>8</b> - 2-3 minutes</li>
+                  <li><b>7</b> - 3-4 minutes</li>
+                  <li><b>6</b> - 4-5 minute</li>
+                  <li><b>5</b> - 5-6 minutes</li>
+                  <li><b>4</b> - 6-7 minutes</li>
+                  <li><b>3</b> - 7-8 minutes</li>
+                  <li><b>2</b> - 8-9 minutes</li>
+                  <li><b>1</b> - >9 minutes</li>
+                </ul>
+                <p>Human Safety Score:</p>
+                  <ul>
+                    <li><b>10</b> - 0 Health Rating (no risk) in HMIS (first number)</li>
+                    <li><b>7</b> - 1 Health Rating (irritation can occur) in HMIS</li>
+                    <li><b>4</b> - 2 Health Rating (minor injury can occur) in HMIS</li>
+                    <li><b>1</b> - 3 Health Rating (major injury likely) in HMIS</li>
+                  </ul>
+
+                </modal-dialog>
+  </div>
+          </div>
+      </div>
     </div>
   </body>
 </html>

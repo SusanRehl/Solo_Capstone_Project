@@ -103,9 +103,9 @@ $scope.downloadPDF = function() {
         }]
       };
       pdfMake.createPdf(docDef).download('MyDisinfectantSelections.pdf');  // download the PDF (temporarily Chrome-only)
-    }
-  });
-};
+    } // end making pdf out of rendered canvas image
+  }); //end html2canvas export function
+}; // end downloadPDF function
 
 
 
@@ -152,3 +152,34 @@ $scope.downloadPDF = function() {
 //end API CODE
 
 }]); // end myApp controller
+
+//MODAL CODE
+
+myApp.directive('modalDialog', function() {
+  return {
+    restrict: 'E',
+    scope: {
+      show: '='
+    },
+    replace: true, // Replace with the template below
+    transclude: true, // we want to insert custom content inside the directive
+    link: function(scope, element, attrs) {
+      scope.dialogStyle = {};
+      if (attrs.width)
+        scope.dialogStyle.width = attrs.width;
+      if (attrs.height)
+        scope.dialogStyle.height = attrs.height;
+      scope.hideModal = function() {
+        scope.show = false;
+      };
+    },
+    template: "<div class='ng-modal' ng-show='show'><div class='ng-modal-overlay' ng-click='hideModal()'></div><div class='ng-modal-dialog' ng-style='dialogStyle'><div class='ng-modal-close' ng-click='hideModal()'>X</div><div class='ng-modal-dialog-content' ng-transclude></div></div></div>" // See below
+  };
+}); // end app.directive
+
+myApp.controller('MyCtrl', function($scope) {
+  $scope.modalShown = false;
+  $scope.toggleModal = function() {
+    $scope.modalShown = !$scope.modalShown;
+  };
+});
