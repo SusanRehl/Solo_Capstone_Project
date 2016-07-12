@@ -28,7 +28,7 @@
                  <td>Manufacturer</td>
                  <td>EPA Reg No.</td>
                  <td>Chemistry</td>
-                 <td>Bacteria and Viruses Kill Time and Claims</td>
+                 <td>Pathogen Kill Times and Claims</td>
                  <td>HMIS Rating and PPE Required</td>
                  <td>Additional Equipment Required</td>
                  <td>Additional Links</td>
@@ -40,7 +40,14 @@
                  <td>{{ record.manufacturer}}
                  <td>{{record.eparegno}}</td>
                  <td>{{record.chemistry}}</td>
-                 <td><b>KILL TIME VARIABLE</b><br />{{record.bvclaims}}</td>
+                 <td>
+                   <p>Bacteria and Viruses: {{record.bvkill}} min.</p>
+                   <p ng-show="record.noroclaim == true">Norovirus: {{record.norokill}} min.</p>
+                   <p ng-show="record.cdiffclaim == true">C. difficile: {{record.cdiffkill}} min.</p>
+                   <p ng-show="record.fungiclaim == true">Fungi: {{record.fungikill}} min.</p>
+                   <p>{{record.bvclaims}}</p>
+
+                 </td>
                  <td>{{record.hmis}}<br />{{record.ppe}}</td>
                  <td>{{record.equipment}}</td>
                  <td><a href ={{record.productpage}}>Product Page Link</a><br /><a href ={{record.sds}}>Safety Data Sheet Link</a><br /><a ng-show="record.techdocs!==0" href ={{record.techdocs}}>Technical Documents Link</a><br /><a ng-show="record.epamasterlabel!==0"href ={{record.epamasterlabel}}>EPA Master Label PDF Link</a></td>

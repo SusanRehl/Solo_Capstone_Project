@@ -114,18 +114,18 @@ app.post('/select', urlencodedParser, function(req, res) { // pulling selected d
                   return res.json(selectedProducts);
                 }); // end products.on function
                 break; // end case norovirus and enveloped viruses
-              case "C difficile":
-                products=client.query("SELECT * FROM products WHERE surfaces= '" + req.body.surfaces + "' AND format= '" + req.body.format + "' AND cdiffclaim=TRUE ORDER BY(scorekill + scoresafety + scorepathogens) DESC LIMIT 3");  // getting products from products table
-                rows = 0;
-                products.on('row', function(row) {  // pushing to array
-                  selectedProducts.push(row);
-                });  // end query push
-                products.on('end', function() {  // sending to scripts
-                  console.log("C diff products from app.post in app");
-                  console.log(selectedProducts);
-                  return res.json(selectedProducts);
-                }); // end products.on function
-                break; // end case C difficile
+                case "C difficile":
+                  products=client.query("SELECT * FROM products WHERE surfaces= '" + req.body.surfaces + "' AND format= '" + req.body.format + "' AND cdiffclaim=TRUE ORDER BY(scorekill + scoresafety + scorepathogens) DESC LIMIT 3");  // getting products from products table
+                  rows = 0;
+                  products.on('row', function(row) {  // pushing to array
+                    selectedProducts.push(row);
+                  });  // end query push
+                  products.on('end', function() {  // sending to scripts
+                    console.log("C diff products from app.post in app");
+                    console.log(selectedProducts);
+                    return res.json(selectedProducts);
+                  }); // end products.on function
+                  break; // end case C difficile
               case "Fungi":
                 products=client.query("SELECT * FROM products WHERE surfaces= '" + req.body.surfaces + "' AND format= '" + req.body.format + "' AND fungiclaim=TRUE ORDER BY(scorekill + scoresafety + scorepathogens) DESC LIMIT 3");  // getting products from products table
                 rows = 0;
