@@ -178,8 +178,9 @@ app.post('/all', urlencodedParser, function(req, res) { // pulling selected disi
               });  // end query push
               products.on('end', function() {  // sending to scripts
                 console.log("bac and vir products from app.post in app");
-                console.log(selectedProducts.productname);
-                return res.json(selectedProducts);
+                for(var i=0; i<selectedProducts.length; i++) {
+                  console.log(selectedProducts[i].productname);
+                }                return res.json(selectedProducts);
               }); // end products.on function
             break; // end case bacteria and viruses
             case "Norovirus etc.":
@@ -190,8 +191,9 @@ app.post('/all', urlencodedParser, function(req, res) { // pulling selected disi
               });  // end query push
               products.on('end', function() {  // sending to scripts
                 console.log("Noro products from app.post in app");
-                console.log(selectedProducts.productname);
-                return res.json(selectedProducts);
+                for(var i=0; i<selectedProducts.length; i++) {
+                  console.log(selectedProducts[i].productname);
+                }                return res.json(selectedProducts);
               }); // end products.on function
               break; // end case norovirus and enveloped viruses
             case "C difficile":
@@ -202,8 +204,9 @@ app.post('/all', urlencodedParser, function(req, res) { // pulling selected disi
               });  // end query push
               products.on('end', function() {  // sending to scripts
                 console.log("C diff products from app.post in app");
-                console.log(selectedProducts.productname);
-                return res.json(selectedProducts);
+                for(var i=0; i<selectedProducts.length; i++) {
+                  console.log(selectedProducts[i].productname);
+                }                return res.json(selectedProducts);
               }); // end products.on function
               break; // end case C difficile
             case "Fungi":
@@ -214,8 +217,9 @@ app.post('/all', urlencodedParser, function(req, res) { // pulling selected disi
               });  // end query push
               products.on('end', function() {  // sending to scripts
                 console.log("Fungi products from app.post in app");
-                console.log(selectedProducts.productname);
-                return res.json(selectedProducts);
+                for(var i=0; i<selectedProducts.length; i++) {
+                  console.log(selectedProducts[i].productname);
+                }                return res.json(selectedProducts);
               }); // end products.on function
               break; // end case Fungi
           } // end switch
@@ -243,8 +247,9 @@ app.post('/all', urlencodedParser, function(req, res) { // pulling selected disi
                 });  // end query push
                 products.on('end', function() {  // sending to scripts
                   console.log("Noro products from app.post in app");
-                  console.log(selectedProducts.productname);
-                  return res.json(selectedProducts);
+                  for(var i=0; i<selectedProducts.length; i++) {
+                    console.log(selectedProducts[i].productname);
+                  }                  return res.json(selectedProducts);
                 }); // end products.on function
                 break; // end case norovirus and enveloped viruses
                 case "C difficile":
@@ -255,8 +260,9 @@ app.post('/all', urlencodedParser, function(req, res) { // pulling selected disi
                   });  // end query push
                   products.on('end', function() {  // sending to scripts
                     console.log("C diff products from app.post in app");
-                    console.log(selectedProducts.productname);
-                    return res.json(selectedProducts);
+                    for(var i=0; i<selectedProducts.length; i++) {
+                      console.log(selectedProducts[i].productname);
+                    }                    return res.json(selectedProducts);
                   }); // end products.on function
                   break; // end case C difficile
               case "Fungi":
@@ -267,8 +273,9 @@ app.post('/all', urlencodedParser, function(req, res) { // pulling selected disi
                 });  // end query push
                 products.on('end', function() {  // sending to scripts
                   console.log("Fungi products from app.post in app");
-                  console.log(selectedProducts.productname);
-                  return res.json(selectedProducts);
+                  for(var i=0; i<selectedProducts.length; i++) {
+                    console.log(selectedProducts[i].productname);
+                  }                  return res.json(selectedProducts);
                 }); // end products.on function
                 break; // end case Fungi
             } // end switch

@@ -29,9 +29,9 @@ a {
   padding: 10px;
 }
 
-.container {
+.container-fluid {
   align: left;
-  margin: 20px 0 0 50px;
+  margin: 50px 20px 0 20px;
 }
 
 .blueback {
@@ -54,8 +54,8 @@ a {
 
 .scoreButton {
   position: absolute;
-  top: 145px;
-  left: 68px;
+  top: 174px;
+  left: 38px;
   background-color: #9cc6fc;
   font-family: 'PT Sans Narrow', "Helvetica, sans-serif";*/
 }
@@ -63,6 +63,7 @@ a {
 .button {
   background-color: #9cc6fc;
   font-family: 'PT Sans Narrow', "Helvetica, sans-serif";
+  margin-bottom: 5px;
 }
 
 .button:hover {

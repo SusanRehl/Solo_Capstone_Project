@@ -38,7 +38,7 @@
                  <td class="spacing"><h4>Additional Links</h4></td>
                  </tr>
                <tr class="productRecord" ng-repeat='record in disinfectantList | orderBy:scoretotal'>
-                 <td width="55" class="spacing" ng-init="record.scoretotal = record.scorekill + record.scoresafety + record.scorepathogens"><h3>{{record.scoretotal}}</h3></td>
+                 <td width="65" class="spacing" ng-init="record.scoretotal = record.scorekill + record.scoresafety + record.scorepathogens"><h3>{{record.scoretotal}}</h3></td>
                  <td ><img ng-src="{{record.image}}" height="150"></img></td>
                  <td class="spacing"><h3>{{ record.productname }}</h3></td>
                  <td class="spacing">{{ record.manufacturer}}
@@ -53,20 +53,21 @@
                  </td>
                  <td class="spacing"><h4>{{record.hmis}}</h4><br /><p>{{record.ppe}}</p></td>
                  <td class="spacing">{{record.equipment}}</td>
-                 <td class="spacing"><button type="button" class="button"><a href ={{record.productpage}} class="button" target="_blank">Product Page Link</button></a><br />
-                   <button type="button" class="button"><a href ={{record.sds}} class="button" target="_blank">Safety Data Sheet Link</button></a><br />
-                   <button type="button" class="button"><a ng-show="record.techdocs!==0" href ={{record.techdocs}} class="button" target="_blank">Technical Documents Link</button></a><br />
-                   <button type="button" class="button"><a ng-show="record.epamasterlabel!==0" href ={{record.epamasterlabel}} class="button" target="_blank">EPA Master Label PDF Link</button></a></td>
+                 <td class="spacing"><a href ={{record.productpage}} class="button btn" target="_blank">Product Page Link</a><br />
+                   <a href ={{record.sds}} class="button btn" target="_blank">Safety Data Sheet Link</a><br />
+                   <a ng-hide="record.techdocs==0" href ={{record.techdocs}} class="button btn" target="_blank">Technical Documents Link</a><br />
+                   <a ng-hide="record.epamasterlabel==0" href ={{record.epamasterlabel}} class="button btn" target="_blank">EPA Master Label PDF Link</a></td>
                </tr>
              </table>
             </div>
-        <button type="button" ng-click="downloadPDF()" class="button"><h4>Download PDF</h4></button>
-        <button type="button" class="button"><a href="mailto:%20?subject=List%20of%20Disinfectants&body=Remember%20to%20attach%20the%20PDF%20from%20your%20Downloads%20folder" class="button"><h4>Email (download PDF first)</h4></button></a>
-        <button type="button" class="button"><a href="files/disinfectantcostcalculator.xlsx" download class="button"><h4>Download Cost Calculator (Excel)</h4></button></a>
-        <button type="button" class="button" ng-click="viewAllMatches()"><h4>View All Matched Products</h4></button>
-        <button type="button" class="button"><a href="/questionnaire" class="button"><h4>Back to Questionnaire</h4></button><a>
+        <a ng-click="downloadPDF()" class="button btn"><h4>Download PDF</h4></a>
+        <a href="mailto:%20?subject=List%20of%20Disinfectants&body=Remember%20to%20attach%20the%20PDF%20from%20your%20Downloads%20folder" class="button btn"><h4>Email (download PDF first)</h4></a>
+        <a href="files/disinfectantcostcalculator.xlsx" download class="button btn"><h4>Download Cost Calculator (Excel)</h4></a>
+        <a  ng-click="viewAllMatches()" class="button btn"><h4>View All Matched Products</h4></a>
+        <a href="/questionnaire" class="button btn"><h4>Back to Questionnaire</h4><a>
+
           <div ng-controller="MyCtrl">
-              <td><button class="scoreButton button" ng-click="toggleModal()"><h4>Score</h4></button></td>
+              <a class="scoreButton button btn" ng-click="toggleModal()"><h4>Score</h4></a>
             <modal-dialog show='modalShown' width='600px' height='50%'>
               <h3>Scoring Method:</h3>
               <h4>Highest (best) possible score: 30</h4>
