@@ -34,6 +34,7 @@ myApp.controller('productController', ['$scope', '$http', function($scope, $http
 
   $scope.allProducts = function() { // sends criteria for View Matched Products on results page
       // console.log("in allproducts function - here's object to send: ", $scope.choices.values[0]);
+      event.preventDefault();
       objectToSend ={  // package inputs into object to send
         areas: $scope.choices.values[0],  // pull from choices array
         surfaces: $scope.choices.values[1],
@@ -50,7 +51,7 @@ myApp.controller('productController', ['$scope', '$http', function($scope, $http
   }; // end allProducts function
 
   $scope.saveChoices = function() { // pulls choice values from questionnaire
-        event.preventDefault();
+    event.preventDefault();
     $http({  // sends object via POST to capture choice values to display on results page
       method: 'POST',
       url: '/choices',
@@ -65,6 +66,7 @@ myApp.controller('productController', ['$scope', '$http', function($scope, $http
 
   $scope.getProducts = function() { // gets products for results page
     console.log("in getProducts function in script");
+    event.preventDefault();
     $http({   // gets recordset via GET
       method: 'GET',
       url: '/list',
@@ -79,6 +81,7 @@ myApp.controller('productController', ['$scope', '$http', function($scope, $http
   }; // end getProducts function
 
   $scope.getChoices = function() {  // get choices for display on results page
+    event.preventDefault();
     $http({   // gets recordset via GET
       method: 'GET',
       url: '/choicelist',
@@ -106,8 +109,6 @@ $scope.downloadPDF = function() {
     } // end making pdf out of rendered canvas image
   }); //end html2canvas export function
 }; // end downloadPDF function
-
-
 
 
 // API CODE
@@ -155,14 +156,14 @@ $scope.downloadPDF = function() {
 
 //MODAL CODE
 
-myApp.directive('modalDialog', function() {
+myApp.directive('modalDialog', function() { //
   return {
     restrict: 'E',
     scope: {
       show: '='
     },
     replace: true, // Replace with the template below
-    transclude: true, // we want to insert custom content inside the directive
+    transclude: true, // insert custom content inside the directive
     link: function(scope, element, attrs) {
       scope.dialogStyle = {};
       if (attrs.width)

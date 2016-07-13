@@ -47,7 +47,9 @@ app.post('/select', urlencodedParser, function(req, res) { // pulling selected d
               });  // end query push
               products.on('end', function() {  // sending to scripts
                 console.log("bac and vir products from app.post in app");
-                console.log(selectedProducts.productname);
+                for(var i=0; i<selectedProducts.length; i++) {
+                  console.log(selectedProducts[i].productname);
+                }
                 return res.json(selectedProducts);
               }); // end products.on function
             break; // end case bacteria and viruses
@@ -59,7 +61,9 @@ app.post('/select', urlencodedParser, function(req, res) { // pulling selected d
               });  // end query push
               products.on('end', function() {  // sending to scripts
                 console.log("Noro products from app.post in app");
-                console.log(selectedProducts.productname);
+                for(var i=0; i<selectedProducts.length; i++) {
+                  console.log(selectedProducts[i].productname);
+                }
                 return res.json(selectedProducts);
               }); // end products.on function
               break; // end case norovirus and enveloped viruses
@@ -71,7 +75,9 @@ app.post('/select', urlencodedParser, function(req, res) { // pulling selected d
               });  // end query push
               products.on('end', function() {  // sending to scripts
                 console.log("C diff products from app.post in app");
-                console.log(selectedProducts.productname);
+                for(var i=0; i<selectedProducts.length; i++) {
+                  console.log(selectedProducts[i].productname);
+                }
                 return res.json(selectedProducts);
               }); // end products.on function
               break; // end case C difficile
@@ -83,7 +89,9 @@ app.post('/select', urlencodedParser, function(req, res) { // pulling selected d
               });  // end query push
               products.on('end', function() {  // sending to scripts
                 console.log("Fungi products from app.post in app");
-                console.log(selectedProducts.productname);
+                for(var i=0; i<selectedProducts.length; i++) {
+                  console.log(selectedProducts[i].productname);
+                }
                 return res.json(selectedProducts);
               }); // end products.on function
               break; // end case Fungi
@@ -112,7 +120,9 @@ app.post('/select', urlencodedParser, function(req, res) { // pulling selected d
                 });  // end query push
                 products.on('end', function() {  // sending to scripts
                   console.log("Noro products from app.post in app");
-                  console.log(selectedProducts.productname);
+                  for(var i=0; i<selectedProducts.length; i++) {
+                    console.log(selectedProducts[i].productname);
+                  }
                   return res.json(selectedProducts);
                 }); // end products.on function
                 break; // end case norovirus and enveloped viruses
@@ -124,7 +134,9 @@ app.post('/select', urlencodedParser, function(req, res) { // pulling selected d
                   });  // end query push
                   products.on('end', function() {  // sending to scripts
                     console.log("C diff products from app.post in app");
-                    console.log(selectedProducts.productname);
+                    for(var i=0; i<selectedProducts.length; i++) {
+                      console.log(selectedProducts[i].productname);
+                    }
                     return res.json(selectedProducts);
                   }); // end products.on function
                   break; // end case C difficile
@@ -136,12 +148,14 @@ app.post('/select', urlencodedParser, function(req, res) { // pulling selected d
                 });  // end query push
                 products.on('end', function() {  // sending to scripts
                   console.log("Fungi products from app.post in app");
-                  console.log(selectedProducts.productname);
+                  for(var i=0; i<selectedProducts.length; i++) {
+                    console.log(selectedProducts[i].productname);
+                  }
                   return res.json(selectedProducts);
                 }); // end products.on function
                 break; // end case Fungi
             } // end switch
-        } //end else
+        } //end else (including format preference)
       done(); // signals done
     } // end else
   }); // end pg connect function
