@@ -180,7 +180,8 @@ app.post('/all', urlencodedParser, function(req, res) { // pulling selected disi
                 console.log("bac and vir products from app.post in app");
                 for(var i=0; i<selectedProducts.length; i++) {
                   console.log(selectedProducts[i].productname);
-                }                return res.json(selectedProducts);
+                }
+                return res.json(selectedProducts);
               }); // end products.on function
             break; // end case bacteria and viruses
             case "Norovirus etc.":
@@ -193,7 +194,8 @@ app.post('/all', urlencodedParser, function(req, res) { // pulling selected disi
                 console.log("Noro products from app.post in app");
                 for(var i=0; i<selectedProducts.length; i++) {
                   console.log(selectedProducts[i].productname);
-                }                return res.json(selectedProducts);
+                }
+                return res.json(selectedProducts);
               }); // end products.on function
               break; // end case norovirus and enveloped viruses
             case "C difficile":
@@ -206,7 +208,8 @@ app.post('/all', urlencodedParser, function(req, res) { // pulling selected disi
                 console.log("C diff products from app.post in app");
                 for(var i=0; i<selectedProducts.length; i++) {
                   console.log(selectedProducts[i].productname);
-                }                return res.json(selectedProducts);
+                }
+                return res.json(selectedProducts);
               }); // end products.on function
               break; // end case C difficile
             case "Fungi":
@@ -219,7 +222,8 @@ app.post('/all', urlencodedParser, function(req, res) { // pulling selected disi
                 console.log("Fungi products from app.post in app");
                 for(var i=0; i<selectedProducts.length; i++) {
                   console.log(selectedProducts[i].productname);
-                }                return res.json(selectedProducts);
+                }
+                return res.json(selectedProducts);
               }); // end products.on function
               break; // end case Fungi
           } // end switch
@@ -249,7 +253,8 @@ app.post('/all', urlencodedParser, function(req, res) { // pulling selected disi
                   console.log("Noro products from app.post in app");
                   for(var i=0; i<selectedProducts.length; i++) {
                     console.log(selectedProducts[i].productname);
-                  }                  return res.json(selectedProducts);
+                  }
+                  return res.json(selectedProducts);
                 }); // end products.on function
                 break; // end case norovirus and enveloped viruses
                 case "C difficile":
@@ -262,7 +267,8 @@ app.post('/all', urlencodedParser, function(req, res) { // pulling selected disi
                     console.log("C diff products from app.post in app");
                     for(var i=0; i<selectedProducts.length; i++) {
                       console.log(selectedProducts[i].productname);
-                    }                    return res.json(selectedProducts);
+                    }
+                    return res.json(selectedProducts);
                   }); // end products.on function
                   break; // end case C difficile
               case "Fungi":
@@ -275,12 +281,13 @@ app.post('/all', urlencodedParser, function(req, res) { // pulling selected disi
                   console.log("Fungi products from app.post in app");
                   for(var i=0; i<selectedProducts.length; i++) {
                     console.log(selectedProducts[i].productname);
-                  }                  return res.json(selectedProducts);
+                  }
+                  return res.json(selectedProducts);
                 }); // end products.on function
                 break; // end case Fungi
             } // end switch
         } //end else
-      done(); // signals done
+      done(); // signals function is done
     } // end else
   }); // end pg connect function
 }); // end app.post /all function

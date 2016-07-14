@@ -72,12 +72,12 @@ myApp.controller('productController', ['$scope', '$http', function($scope, $http
       url: '/list',
     }).then( function(response){  // success call - runs function with response parameter
     // console.log(response.data);
-    $scope.disinfectantList = response.data;  // pulls the data from app.js and sets to disinfectantList
-    console.log($scope.disinfectantList);
-  }, function myError(response){
-    console.log(response.statusText);
+      $scope.disinfectantList = response.data;  // pulls the data from app.js and sets to disinfectantList
+      console.log($scope.disinfectantList);
+    }, function myError(response){
+      console.log(response.statusText);
     }// end error function
-  ); // end then response
+    ); // end then response
   }; // end getProducts function
 
   $scope.getChoices = function() {  // get choices for display on results page
