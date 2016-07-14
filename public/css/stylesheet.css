@@ -5,6 +5,7 @@ body, p {
 
 h1 {
   color: #2b8857;
+  padding-top: 50px;
 }
 
 h2 {
@@ -13,6 +14,7 @@ h2 {
 
 h3 {
   color: #01377e;
+  font-family: 'PT Sans Narrow', "Helvetica, sans-serif";
 }
 
 h4 {
@@ -35,7 +37,7 @@ a:hover {
 
 .container-fluid {
   align: left;
-  padding: 50px 20px 0 20px;
+  padding: 0 20px 0 20px;
 }
 
 .blueback {
@@ -43,7 +45,7 @@ a:hover {
 }
 
 .table-bordered {
-  margin-left: 15px;
+  margin: 0 15px;
 }
 
 .radio {
@@ -81,7 +83,7 @@ a:hover {
 }
 
 .header {
-  background-color: #01377e;
+  background: linear-gradient(to right, #01377e, #2b8857);
   color: #FFF;
   font-size: 36px;
   padding: 35px 0 35px 50px;
@@ -91,7 +93,6 @@ a:hover {
   background-color: #e7f1fe;
 }
 
-
 .links {
   color: #2b8857;
   font-weight: 700;
@@ -100,6 +101,16 @@ a:hover {
 .displaycopy {
   font-family: 'PT Sans Narrow', "Helvetica, sans-serif";
   font: 18px/30px bold;
+  padding: 25px 0 0 62px;
+  margin: 0 -30px 0 -30px;
+}
+
+.footer {
+  font: 12px/14px 'PT Sans Narrow', "Helvetica, sans-serif";
+  background-color: #2b8857;
+  color: #e7f1fe;
+  margin: 15px 0 0 -55px;
+  padding: 15px 30px 15px 60px;
 }
 
 /*Modal Styling:*/
@@ -133,4 +144,17 @@ a:hover {
   display: inline-block;
   font-weight: bold;
   font-family: 'arial', 'sans-serif';
+}
+
+/*CAROUSEL STYLING */
+#slides_control > div{
+  height: 200px;
+}
+
+#slides_control {
+  position:absolute;
+  width: 400px;
+  left:50%;
+  top:20px;
+ margin-left:-200px;
 }

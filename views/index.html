@@ -5,7 +5,10 @@
   <head>
     <meta charset="utf-8">
     <script src="vendors/angular.min.js"></script>
+    <!-- <script src="vendors/angular-carousel.min.js"></script> -->
+    <!-- <script src="vendors/angular-animate.js"></script> -->
     <script src="vendors/jquery-2.2.3.min.js"></script>
+    <!-- <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script> -->
     <script src="scripts/script.js"></script>
     <link rel="stylesheet" href="vendors/bootstrap.min.css" charset="utf-8">
     <link rel="stylesheet" href="css/stylesheet.css" charset="utf-8">
@@ -13,39 +16,70 @@
     <title>Disinfectant Selector Home Page</title>
   </head>
   <body>
-    <div ng-controller='productController'>
+    <!-- <div ng-controller='productController'> -->
       <div class="header">
         Hospital-Grade Surface Disinfectant Selector
       </div>
       <div class="container-fluid">
-        <div class="row homeback">
-          <div class="col-md-4">
-          <h3>Welcome!</h3>
-          <div class="displaycopy">
-            <p>copy</p>
-          </div>
-          <h3>How to use this tool:</h3>
-          <div class="displaycopy">
-          <p>how to use copy</p>
-          <p>For more information about surface disinfection, and infection control and prevention, please visit
-          <a class="links" href=http://www.apic.org/Education-and-Events/Overview target="_blank">APIC's (the Association for Professionals in Infection Control and Epidemiology) Education page</a><p>
-            </div>
-        </div>
-          <div class="col-md-8">
-          <h3>About medical surface disinfection</h3>
-          <p>cleaning vs disinfection, 99.9999% is medical grade, kill time vs. dry time, chemistry binding, material compatibility, human safety, ease of use
-          </p>
+        <div class="displaycopy homeback">
+          <div class="row">
+            <div class="col-md-4">
+                <h3>Welcome to the Selector!</h3>
+                <p>This tool is designed to help medical professionals choose the best surface disinfectant product for their specific needs. Infection control and prevention nurses, environmental services managers, and anyone involved in keeping a medical facility free of disease-causing pathogens, are invited to use this tool.</p>
+                <h3>How to use this tool:</h3>
+                <p>This selector is very easy to use! If you are not familiar with medical facility surface disinfection, please take a moment to review the slides at right.</p>
+                <p>Just click on the Continue button, and answer the four questions in the questionnaire. Note that products with both soft and hard surface claims will only be listed if that option is selected, since these products are generally more expensive. Know the Spaulding level of kill you need for your situation, and select the appropriate option in question 3. Because product cost is specific to your facility and purchasing organization, cost is not addressed in this tool, but a cost calculator spreadsheet is available for download at the bottom of the results page.</p>
+                <p>We hope this tool is useful for you in preventing the spread of disease in your facility.</p>
+                <p>For more information about surface disinfection, and infection control and prevention, please visit
+                  <a class="links" href=http://www.apic.org/Education-and-Events/Overview target="_blank">APIC's (the Association for Professionals in Infection Control and Epidemiology) Education page</a><p>
+            </div> <!-- end intro copy-->
+            <div class="col-md-8">
 
-        </div>
-        </div> <!--end row-->
-        <div align="center">
+<!-- Casie's yoga site code: -->
+              <carousel>
+                <slide ng-repeat="slide in slides" active="slide.active">
+                  <img ng-src="{{slide.image1}}" style="margin: auto;">
+                  <div class="carousel-caption">
+                    <h4>{{slide.name}}</h4>
+                  </div>
+                </slide>
+              </carousel>
+
+
+<!--Codepen code:
+              <div ng-app="app">
+                <div ng-controller="CarouselDemoCtrl" id="slides_control">
+                  <div>
+                      <slide ng-repeat="slide in slides" active="slide.active">
+                        <img ng-src="{{slide.image}}">
+                        <div class="carousel-caption">
+                          <h4>Slide {{$index+1}}</h4>
+                        </div>
+                      </slide>
+                    </carousel>
+                  </div>
+                </div>
+              </div> -->
+              <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script> -->
+
+            </div><!--end carousel copy-->
+          </div><!--end row-->
+          <div align="center">
           <a href="/questionnaire" class="button btn"><h4>Continue to Selector</h4></a>
-        </div><!--end button div-->
+          </div><!--end button div-->
         <div class="footer">
-          <p>copyright 2016 Susan Rehl</p>
-          <p>Disclaimer: This tool is intended to assist hospital personnel in selecting surface disinfectant products for use in their facilities. Use products as directed on label only. Not all disinfectant brands are represented in this tool. Further information may be required in order to make an informed decision. Contact your organization's infection control department, the Association for Professionals in Infection Control, or the EPA for guidance and additional information.</p>
+          <div class="row">
+              <div class="col-md-2">
+                <p>&#169;	2016 Susan Rehl</p>
+              </div>
+              <div class="col-md-10">
+                <p>Disclaimer: This tool is intended to assist hospital personnel in selecting surface disinfectant products for use in their facilities. Use products as directed on label only. Not all disinfectant brands are represented in this tool. Further information may be required in order to make an informed decision. Contact your organization's infection control department, the Association for Professionals in Infection Control, or the EPA for guidance and additional information.</p>
+              </div>
+          </div><!--end row-->
         </div><!--end footer-->
+      </div><!--end displaycopy class-->
+
     </div><!--end container-->
-  </div><!--end controller-->
+  <!-- </div><!end controller-->
   </body>
 </html>

@@ -42,7 +42,7 @@ myApp.controller('productController', ['$scope', '$http', function($scope, $http
     $scope.getChoices();
   }; //end resultsInit function
 
-  $scope.getProducts = function() { // gets products for results page
+  $scope.getProducts = function() { // gets all products for results page
     console.log("in getProducts function in script");
     event.preventDefault();
     $http({   // gets recordset via GET
@@ -50,8 +50,8 @@ myApp.controller('productController', ['$scope', '$http', function($scope, $http
       url: '/list',
     }).then( function(response){  // success call - runs function with response parameter
     // console.log(response.data);
-      disinfList = response.data;  // pulls the data from app.js and sets to disinfectantList
-      $scope.disinfectantList= disinfList.slice(0, 3);
+      disinfList = response.data;  // pulls the data from app.js and sets to global var disinfList
+      $scope.disinfectantList= disinfList.slice(0, 3); // slices top 3 products and sends to DOM
       console.log($scope.disinfectantList);
     }, function myError(response){
       console.log(response.statusText);
@@ -59,11 +59,11 @@ myApp.controller('productController', ['$scope', '$http', function($scope, $http
     ); // end then response
   }; // end getProducts function
 
-  $scope.viewAllMatches = function() { // runs allProducts to reset product list, and getProducts to return to results page
+  $scope.viewAllMatches = function() { // gets entire product array list to return to results page
     console.log("in viewAllMatches function in script");
       $scope.disinfectantList= disinfList;
       console.log($scope.disinfectantList);
-  }; // end getProducts function
+  }; // end viewAllMatches function
 
   $scope.getChoices = function() {  // get choices for display on results page
     event.preventDefault();
@@ -137,7 +137,7 @@ $scope.downloadPDF = function() {
   }; // end sendProducts function
 //end API CODE
 
-}]); // end myApp controller
+}]); // end myApp Product controller
 
 //MODAL CODE
 
@@ -170,3 +170,20 @@ myApp.controller('MyCtrl', function($scope) {
   };
 });
 //end Modal Code
+
+// Carousel Code
+
+// var carApp=angular.module('carApp', ['ui.bootstrap', 'ngAnimate']);
+
+// angular.module('app', ['ui.bootstrap']);
+function CarouselDemoCtrl($scope){
+  // $scope.myInterval = 3000;
+  $scope.slides = [
+    { image: '/images/hospitalroom.png/800/600/', header: 'About medical surface disinfection', copy: 'Introduction' },
+    { image: '/images/equipment.png/800/600/', text: 'blah' },
+    { image: '/images/floor.png/800/600/', text: 'blah' },
+    { image: '/images/operatingroom.png/800/600/', text: 'blah' }
+  ];
+}
+
+//End Carousel Code
