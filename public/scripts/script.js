@@ -4,7 +4,8 @@ var myApp=angular.module('myApp', []);
 
 myApp.controller('productController', ['$scope', '$http', function($scope, $http) {
 
-  $scope.disinfectantList=[]; // creates array of disinfectant results
+  var disinfList=[]; // creates array of disinfectant results
+  $scope.disinfectantList=[];
   $scope.choices=[];
   var objectToSend={};
 
@@ -26,29 +27,6 @@ myApp.controller('productController', ['$scope', '$http', function($scope, $http
     var path="/results";  // sends user to results page on click
     window.location.href=path;
   }; // end selectProduct function
-
-  $scope.viewAllMatches = function() { // runs allProducts to reset product list, and getProducts to return to results page
-    $scope.allProducts();
-    $scope.getProducts();
-  }; // end viewAllMatches function
-
-  $scope.allProducts = function() { // sends criteria for View Matched Products on results page
-      // console.log("in allproducts function - here's object to send: ", $scope.choices.values[0]);
-      event.preventDefault();
-      objectToSend ={  // package inputs into object to send
-        areas: $scope.choices.values[0],  // pull from choices array
-        surfaces: $scope.choices.values[1],
-        pathogens: $scope.choices.values[2],
-        format: $scope.choices.values[3]
-        }; // end object
-        console.log(objectToSend);
-      event.preventDefault();
-      $http({  // sends object via POST to select products to return
-        method: 'POST',
-        url: '/all',
-        data: objectToSend
-      });
-  }; // end allProducts function
 
   $scope.saveChoices = function() { // pulls choice values from questionnaire
     event.preventDefault();
@@ -72,12 +50,19 @@ myApp.controller('productController', ['$scope', '$http', function($scope, $http
       url: '/list',
     }).then( function(response){  // success call - runs function with response parameter
     // console.log(response.data);
-      $scope.disinfectantList = response.data;  // pulls the data from app.js and sets to disinfectantList
+      disinfList = response.data;  // pulls the data from app.js and sets to disinfectantList
+      $scope.disinfectantList= disinfList.slice(0, 3);
       console.log($scope.disinfectantList);
     }, function myError(response){
       console.log(response.statusText);
     }// end error function
     ); // end then response
+  }; // end getProducts function
+
+  $scope.viewAllMatches = function() { // runs allProducts to reset product list, and getProducts to return to results page
+    console.log("in viewAllMatches function in script");
+      $scope.disinfectantList= disinfList;
+      console.log($scope.disinfectantList);
   }; // end getProducts function
 
   $scope.getChoices = function() {  // get choices for display on results page
@@ -184,3 +169,4 @@ myApp.controller('MyCtrl', function($scope) {
     $scope.modalShown = !$scope.modalShown;
   };
 });
+//end Modal Code
