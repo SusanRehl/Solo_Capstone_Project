@@ -171,19 +171,17 @@ myApp.controller('MyCtrl', function($scope) {
 });
 //end Modal Code
 
-// Carousel Code
-
-// var carApp=angular.module('carApp', ['ui.bootstrap', 'ngAnimate']);
-
-// angular.module('app', ['ui.bootstrap']);
-function CarouselDemoCtrl($scope){
-  // $scope.myInterval = 3000;
-  $scope.slides = [
-    { image: '/images/hospitalroom.png/800/600/', header: 'About medical surface disinfection', copy: 'Introduction' },
-    { image: '/images/equipment.png/800/600/', text: 'blah' },
-    { image: '/images/floor.png/800/600/', text: 'blah' },
-    { image: '/images/operatingroom.png/800/600/', text: 'blah' }
-  ];
-}
-
+//Swiper Carousel code
+$(document).ready(function () {
+    //initialize swiper when document ready
+    var mySwiper = new Swiper ('.swiper-container', {
+      pagination: '.swiper-pagination',
+      paginationClickable: true,
+      nextButton: '.swiper-button-next',
+      prevButton: '.swiper-button-prev',
+      spaceBetween: 0,
+      direction: 'horizontal',
+      loop: true
+    });
+  });
 //End Carousel Code

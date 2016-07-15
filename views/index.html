@@ -5,65 +5,58 @@
   <head>
     <meta charset="utf-8">
     <script src="vendors/angular.min.js"></script>
-    <!-- <script src="vendors/angular-carousel.min.js"></script> -->
-    <!-- <script src="vendors/angular-animate.js"></script> -->
+    <script src="vendors/angular-route.min.js"></script>
+    <script src="vendors/angular-carousel.min.js"></script>
+    <script src="vendors/angular-animate.js"></script>
+    <script src="vendors/swiper.js"></script>
+    <script src="vendors/swiper.min.js"></script>
     <script src="vendors/jquery-2.2.3.min.js"></script>
     <!-- <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script> -->
     <script src="scripts/script.js"></script>
     <link rel="stylesheet" href="vendors/bootstrap.min.css" charset="utf-8">
+    <link rel="stylesheet" href="vendors/swiper.min.css">
     <link rel="stylesheet" href="css/stylesheet.css" charset="utf-8">
   <link href='https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700' rel='stylesheet' type='text/css'>
     <title>Disinfectant Selector Home Page</title>
   </head>
   <body>
     <!-- <div ng-controller='productController'> -->
+      <!-- <div ng-controller="CarouselDemoCtrl"> -->
       <div class="header">
         Hospital-Grade Surface Disinfectant Selector
       </div>
       <div class="container-fluid">
         <div class="displaycopy homeback">
           <div class="row">
-            <div class="col-md-4">
-                <h3>Welcome to the Selector!</h3>
-                <p>This tool is designed to help medical professionals choose the best surface disinfectant product for their specific needs. Infection control and prevention nurses, environmental services managers, and anyone involved in keeping a medical facility free of disease-causing pathogens, are invited to use this tool.</p>
+            <div class="col-md-5">
+                <div class="subhead">Welcome to the Selector!</div>
+                <p>This tool is designed to help Infection control and prevention nurses, environmental services managers, and anyone involved in keeping a medical facility free of disease-causing pathogens choose the best surface disinfectant product for their specific needs.</p>
                 <h3>How to use this tool:</h3>
-                <p>This selector is very easy to use! If you are not familiar with medical facility surface disinfection, please take a moment to review the slides at right.</p>
-                <p>Just click on the Continue button, and answer the four questions in the questionnaire. Note that products with both soft and hard surface claims will only be listed if that option is selected, since these products are generally more expensive. Know the Spaulding level of kill you need for your situation, and select the appropriate option in question 3. Because product cost is specific to your facility and purchasing organization, cost is not addressed in this tool, but a cost calculator spreadsheet is available for download at the bottom of the results page.</p>
+                <p>If you are not familiar with medical facility surface disinfection, please take a moment to review the slides at right.</p>
+                <p>Just click on the Continue button, and answer the four questions in the questionnaire. Know the Spaulding level of kill you need for your situation, and select the appropriate option in question 3. Because product cost is specific to your facility and purchasing organization, a cost calculator spreadsheet is available for download at the bottom of the results page.</p>
                 <p>We hope this tool is useful for you in preventing the spread of disease in your facility.</p>
                 <p>For more information about surface disinfection, and infection control and prevention, please visit
                   <a class="links" href=http://www.apic.org/Education-and-Events/Overview target="_blank">APIC's (the Association for Professionals in Infection Control and Epidemiology) Education page</a><p>
             </div> <!-- end intro copy-->
-            <div class="col-md-8">
+            <div class="col-md-7">
 
-<!-- Casie's yoga site code: -->
-              <carousel>
-                <slide ng-repeat="slide in slides" active="slide.active">
-                  <img ng-src="{{slide.image1}}" style="margin: auto;">
-                  <div class="carousel-caption">
-                    <h4>{{slide.name}}</h4>
+              <!-- Swiper Carousel -->
+                  <div class="swiper-container">
+                      <div class="swiper-wrapper">
+                          <div class="swiper-slide carcopy1">About Surface Disinfection<img ng-src="https://s32.postimg.org/ul3sq55ph/hospitalroom.png"></div>
+                          <div class="swiper-slide"><img ng-src="https://s31.postimg.org/ahj9b1al7/operatingroom.png">SSlide 2</div>
+                          <div class="swiper-slide"><img ng-src="https://s32.postimg.org/q0l8yjyet/floor.png">SSlide 3</div>
+                          <div class="swiper-slide"><img ng-src="https://s31.postimg.org/sw5bj83sb/equipment.png">SSlide 4</div>
+                      </div>
+                      <!-- Add Arrows -->
+                      <div class="swiper-button-next"></div>
+                      <div class="swiper-button-prev"></div>
+                  <!-- Add Pagination -->
+                  <div class="swiper-pagination"></div>
                   </div>
-                </slide>
-              </carousel>
-
-
-<!--Codepen code:
-              <div ng-app="app">
-                <div ng-controller="CarouselDemoCtrl" id="slides_control">
-                  <div>
-                      <slide ng-repeat="slide in slides" active="slide.active">
-                        <img ng-src="{{slide.image}}">
-                        <div class="carousel-caption">
-                          <h4>Slide {{$index+1}}</h4>
-                        </div>
-                      </slide>
-                    </carousel>
-                  </div>
-                </div>
-              </div> -->
-              <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script> -->
-
-            </div><!--end carousel copy-->
+            <!--end carousel copy-->
           </div><!--end row-->
+        </div>
           <div align="center">
           <a href="/questionnaire" class="button btn"><h4>Continue to Selector</h4></a>
           </div><!--end button div-->
@@ -80,6 +73,7 @@
       </div><!--end displaycopy class-->
 
     </div><!--end container-->
+</div>  <!--end carousel controller--> -->
   <!-- </div><!end controller-->
   </body>
 </html>
