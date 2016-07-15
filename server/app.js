@@ -31,7 +31,7 @@ var rows;
 
 app.post('/select', urlencodedParser, function(req, res) { // pulling selected disinfectants from database from questionnaire.html to display on results.html
     console.log("in app.post select disinfectants");
-    selectedProducts = [];  // resets array to empty to hold products
+    selectedProducts = [];  // resets array to empty for new product search
     pg.connect(connectionString, function(err, client, done) {  // connecting to disinfectants database
       if (err) {     // check for errors
       console.log(err);
@@ -39,7 +39,7 @@ app.post('/select', urlencodedParser, function(req, res) { // pulling selected d
         if (req.body.format==="No Preference") { // returns products of all formats which meet the criteria below
           // console.log('no preference');
           switch(req.body.pathogens) {
-            case "Basic bacteria and viruses":
+            case "Basic bacteria and viruses":  // My methodology here is to return products which meet ONLY the level requested. A product for basic bacteria and viruses which also has norovirus and c diff claims will be unnecessarily harsh and expensive.
               products=client.query("SELECT * FROM products WHERE surfaces= '" + req.body.surfaces + "' AND noroclaim=FALSE AND cdiffclaim=FALSE ORDER BY(scorekill + scoresafety + scorepathogens) DESC");  // getting products from products table
               rows = 0;
               products.on('row', function(row) {  // pushing to array

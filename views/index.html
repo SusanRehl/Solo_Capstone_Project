@@ -5,13 +5,9 @@
   <head>
     <meta charset="utf-8">
     <script src="vendors/angular.min.js"></script>
-    <script src="vendors/angular-route.min.js"></script>
-    <script src="vendors/angular-carousel.min.js"></script>
-    <script src="vendors/angular-animate.js"></script>
     <script src="vendors/swiper.js"></script>
     <script src="vendors/swiper.min.js"></script>
     <script src="vendors/jquery-2.2.3.min.js"></script>
-    <!-- <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script> -->
     <script src="scripts/script.js"></script>
     <link rel="stylesheet" href="vendors/bootstrap.min.css" charset="utf-8">
     <link rel="stylesheet" href="vendors/swiper.min.css">
@@ -20,13 +16,11 @@
     <title>Disinfectant Selector Home Page</title>
   </head>
   <body>
-    <!-- <div ng-controller='productController'> -->
-      <!-- <div ng-controller="CarouselDemoCtrl"> -->
       <div class="header">
         Hospital-Grade Surface Disinfectant Selector
       </div>
       <div class="container-fluid">
-        <div class="displaycopy homeback">
+        <div class="displaycopy blueback">
           <div class="row">
             <div class="col-md-5">
                 <div class="subhead">Welcome to the Selector!</div>
@@ -39,14 +33,24 @@
                   <a class="links" href=http://www.apic.org/Education-and-Events/Overview target="_blank">APIC's (the Association for Professionals in Infection Control and Epidemiology) Education page</a><p>
             </div> <!-- end intro copy-->
             <div class="col-md-7">
-
               <!-- Swiper Carousel -->
                   <div class="swiper-container">
                       <div class="swiper-wrapper">
-                          <div class="swiper-slide carcopy1">About Surface Disinfection<img ng-src="https://s32.postimg.org/ul3sq55ph/hospitalroom.png"></div>
-                          <div class="swiper-slide"><img ng-src="https://s31.postimg.org/ahj9b1al7/operatingroom.png">SSlide 2</div>
-                          <div class="swiper-slide"><img ng-src="https://s32.postimg.org/q0l8yjyet/floor.png">SSlide 3</div>
-                          <div class="swiper-slide"><img ng-src="https://s31.postimg.org/sw5bj83sb/equipment.png">SSlide 4</div>
+                          <div class="swiper-slide" style="background-image: url(https://s32.postimg.org/ul3sq55ph/hospitalroom.png)">
+                            <p class="carcopy copy1">About Surface Disinfection<br /><br />
+                            Surface disinfection is done several times per day in a medical facility, and yet is a difficult and complicated task to achieve. Learn these basic factors in product selection to make the task a little easier and more effective. </p>
+                          </div>
+                          <div class="swiper-slide" style="background-image: url(https://s31.postimg.org/ahj9b1al7/operatingroom.png)">
+                            <p class="carcopy copy2">Cleaning and Disinfection<br /><br />
+                            Cleaning removes dirt and debris from surfaces, but doesn't kill any germs left behind. Disinfecting kills pathogens with chemicals. Make sure you are using an EPA-registered disinfectant, not just a cleaner.</p>
+                          </div>
+                          <div class="swiper-slide" style="background-image: url(https://s32.postimg.org/q0l8yjyet/floor.png)">
+                            <p class="carcopy copy3">Factors That Affect Efficacy<br /><br />
+                            Medical-grade disinfectants kill 99.9999% of pathogens on a surface, but only when the surface remains wet. If the label's kill time (the length of time required to kill the pathogens listed on the product label) is longer than the time it takes to dry, full disinfection has not been achieved. Test samples of new products to determine if they will stay wet long enough to meet their kill times. If you are using quat or bleach chemistry liquids with separate wipers, make sure the wiper fabric does not bind to the active ingredient, which diminishes efficacy.</p>
+                            </div>
+                          <div class="swiper-slide" style="background-image: url(https://s31.postimg.org/sw5bj83sb/equipment.png)">
+                            <p class="carcopy copy4">Other Important Factors to Consider<br /><br />
+                            Check the human safety HMIS rating of your product to ensure it's safe for staff and patients. Contact the product manufacturer to make sure the chemistry will not damage your expensive equipment by requesting a material compatibility list. Test products, especially concentrates, for ease of use. Compare the full cost of using the product (not just the product's case price).</div>
                       </div>
                       <!-- Add Arrows -->
                       <div class="swiper-button-next"></div>
@@ -54,7 +58,7 @@
                   <!-- Add Pagination -->
                   <div class="swiper-pagination"></div>
                   </div>
-            <!--end carousel copy-->
+            <!--end Swiper carousel copy-->
           </div><!--end row-->
         </div>
           <div align="center">
@@ -73,7 +77,7 @@
       </div><!--end displaycopy class-->
 
     </div><!--end container-->
-</div>  <!--end carousel controller--> -->
+  </div>  <!--end carousel controller--> -->
   <!-- </div><!end controller-->
   </body>
 </html>

@@ -61,7 +61,7 @@ a:hover {
 .button {
   background-color: #9cc6fc;
   font-family: 'PT Sans Narrow', "Helvetica, sans-serif";
-  margin: 15px 0 5px 0;
+  margin-bottom: 5px;
 }
 
 .button:hover {
@@ -79,10 +79,6 @@ a:hover {
   color: #FFF;
   font-size: 36px;
   padding: 35px 0 35px 50px;
-}
-
-.homeback {
-  background-color: #e7f1fe;
 }
 
 .subhead {
@@ -148,7 +144,7 @@ a:hover {
 
 /*Swiper Carousel styling*/
 .swiper-container {
-       /*width: 100%;*/
+       width: 800px;
        height: 100%;
        margin: 20px auto;
    }
@@ -174,6 +170,26 @@ a:hover {
        align-items: center;
    }
 
-   .carcopy1 {
+.carcopy {
+   height: 500px;
+   font-family: 'PT Sans Narrow', "Helvetica, sans-serif";
+   font-size: 27px;
+   color: #8bdab0;
 
    }
+
+.copy1 {
+  padding: 50px 60px 25px 400px;
+}
+
+.copy2 {
+  padding: 40px 35px 25px 70px;
+}
+
+.copy3 {
+  padding: 40px 280px 25px 70px;
+}
+
+.copy4 {
+  padding: 40px 360px 25px 70px;
+}

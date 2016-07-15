@@ -79,8 +79,7 @@ myApp.controller('productController', ['$scope', '$http', function($scope, $http
   ); // end then response
 }; // end getChoices function
 
-// Export results to PDF using html2canvas and pdfmake
-$scope.downloadPDF = function() {
+$scope.downloadPDF = function() {   // Export results to PDF using html2canvas and pdfmake
   html2canvas(document.getElementById('exportPDF'), {
     onrendered: function(canvas) {
       var data=canvas.toDataURL();
@@ -90,7 +89,7 @@ $scope.downloadPDF = function() {
           width: 500,
         }]
       };
-      pdfMake.createPdf(docDef).download('MyDisinfectantSelections.pdf');  // download the PDF (temporarily Chrome-only)
+      pdfMake.createPdf(docDef).download('MyDisinfectantSelections.pdf');  // download the PDF
     } // end making pdf out of rendered canvas image
   }); //end html2canvas export function
 }; // end downloadPDF function
@@ -140,15 +139,14 @@ $scope.downloadPDF = function() {
 }]); // end myApp Product controller
 
 //MODAL CODE
-
 myApp.directive('modalDialog', function() { //
   return {
     restrict: 'E',
     scope: {
       show: '='
     },
-    replace: true, // Replace with the template below
-    transclude: true, // insert custom content inside the directive
+    replace: true,
+    transclude: true,
     link: function(scope, element, attrs) {
       scope.dialogStyle = {};
       if (attrs.width)
@@ -172,8 +170,7 @@ myApp.controller('MyCtrl', function($scope) {
 //end Modal Code
 
 //Swiper Carousel code
-$(document).ready(function () {
-    //initialize swiper when document ready
+$(document).ready(function () {     //initialize swiper when document ready
     var mySwiper = new Swiper ('.swiper-container', {
       pagination: '.swiper-pagination',
       paginationClickable: true,
@@ -184,4 +181,4 @@ $(document).ready(function () {
       loop: true
     });
   });
-//End Carousel Code
+//End Swiper Carousel Code
