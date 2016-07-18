@@ -39,7 +39,7 @@
                  </tr>
                <tr class="productRecord" ng-repeat='record in disinfectantList | orderBy:scoretotal'>
                  <td width="65" class="spacing" ng-init="record.scoretotal = record.scorekill + record.scoresafety + record.scorepathogens"><h3>{{record.scoretotal}}</h3></td>
-                 <td ><img ng-src="{{record.image}}" height="150"></img></td>
+                 <td align="center"><img ng-src="{{record.image}}" height="150"></img></td>
                  <td class="spacing"><h3>{{ record.productname }}</h3></td>
                  <td class="spacing">{{ record.manufacturer}}
                  <td class="spacing">{{record.eparegno}}</td>
