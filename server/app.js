@@ -4,7 +4,15 @@ var path=require('path');  // sets up paths
 var bodyParser=require('body-parser');  // sets up body-parser for POST method (for admin user feature stretch goal)
 var urlencodedParser=bodyParser.urlencoded( {extended: false} );
 var pg=require('pg');  // sets up postgres database
-var connectionString='postgres://localhost:5432/disinfectants';
+var connectionString = '';
+ if(process.env.DATABASE_URL !== undefined) {
+     console.log('env connection string');
+     connectionString = process.env.DATABASE_URL;
+     pg.defaults.ssl = true;
+ } else {
+     connectionString = 'postgres://localhost:5432/disinfectants';
+ }
+ console.log("connectionString set to: ", connectionString);
 
 app.use(bodyParser.json());
 
