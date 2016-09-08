@@ -18,4 +18,6 @@ Additional features included educational information about disinfection, downloa
 and a cost calculator. Data was sourced from the EPA’s PPLS API, and supplemented with additional data 
 from manufacturers’ technical documents (EPA Master Label, Technical Document, and SDS) to create a comprehensive database. 
 
+##Hosted at https://disinfectantselector.herokuapp.com/
+
 
